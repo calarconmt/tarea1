@@ -1,0 +1,34 @@
+{
+    "error": {
+      "errorNumber": 0
+    },
+    "data": {
+      "statusLog": [
+        {
+          "statusId": 74,
+          "statusName": "Operativo",
+          "color": "#22d983",
+          "percentage": 0
+        },
+        {
+          "statusId": 75,
+          "statusName": "Demora",
+          "color": "#ff9966",
+          "percentage": 0
+        },
+        {
+          "statusId": 76,
+          "statusName": "Reserva",
+          "color": "#5d9cec",
+          "percentage": 0
+        },
+        {
+          "statusId": 77,
+          "statusName": "Fuera de Servicio",
+          "color": "#c0c0c0",
+          "percentage": 0
+        }
+      ],
+      "statusMachine": []
+    }
+  }

@@ -1,9 +1,9 @@
 export interface Machstatusinterface {
-    error: any;
-    data: Array<statuslog>;
+    statusLog: Array<Machstatusinterfacelog>;
     statusMachine: any;
 }
-export interface statuslog {
+
+export interface Machstatusinterfacelog {
     statusId: number;
     statusName: string;
     color: string;
