@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MachstatusserviceService } from 'src/app/services/machstatusservice.service';
-import { Machstatusinterface, Machstatusinterfacelog } from 'src/app/interfaces/machstatusinterface';
+import { NgModule } from '@angular/core';
+// tslint:disable-next-line: max-line-length
+import { Machstatusinterface, Machstatusinterfacelog, Machstatusinterfacemodels, Machstatusinterfacemodellogs } from 'src/app/interfaces/machstatusinterface';
 
 @Component({
   selector: 'app-machstatus',
@@ -9,27 +11,25 @@ import { Machstatusinterface, Machstatusinterfacelog } from 'src/app/interfaces/
 })
 export class MachstatusComponent {
   public arraymachinestatus: Array<Machstatusinterfacelog>;
-  public statusidlist: number[];
-  public statusnamelist: string[];
-  public colorlist: string[];
-  public percentagelist: number[];
+  public arraymachmodels: Array<Machstatusinterfacemodellogs>;
+  public srcimg: string;
+  public selidmach: number;
+  public dateDay: string;
 
   constructor(public statusservice: MachstatusserviceService) {
-    this.statusidlist = [];
-    this.statusnamelist = [];
-    this.colorlist = [];
-    this.percentagelist = [];
+    this.srcimg = '';
+    this.dateDay = '';
   }
 
   public getstatuslog(): void {
+    this.dateDay = new Date().toLocaleString();
     this.statusservice.getdata('http://localhost:3000/data').subscribe((res: Machstatusinterface) => {
     this.arraymachinestatus = res.statusLog;
-    //   this.statusservice = JSON.parse(res.data.toString());
-    //   this.arraymachinestatus.forEach(element => {
-    //     this.statusidlist.push(element.statusId);
-    //   });
-    console.log(this.arraymachinestatus);
+    });
+  }
+  public getmachmodels(): void {
+    this.statusservice.getdata('http://localhost:3000/machmodels').subscribe((res: Machstatusinterfacemodels) => {
+    this.arraymachmodels = res.modelLogs;
     });
   }
 }
-

@@ -30,5 +30,21 @@
         }
       ],
       "statusMachine": []
-    }
+    },
+    "machmodels": {
+      "modelLogs": [
+        {
+          "machineTypeId": 1,
+          "machineTypeName": "Jumbo"
+        },
+        {
+          "machineTypeId": 2,
+          "machineTypeName": "Manitou"
+        },
+        {
+          "machineTypeId": 3,
+          "machineTypeName": "Scoop"
+        }
+      ]
   }
+}

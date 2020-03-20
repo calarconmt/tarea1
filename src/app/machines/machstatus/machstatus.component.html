@@ -1,9 +1,29 @@
-<div>
-    <a>RESUMEN GENERAL DE ESTADOS.</a>
-    <ng-container>
-        <div class="container">
-            <button type="button" (click)='getstatuslog()'>Cargar Logs</button>
-        </div>
-    </ng-container>
+<div class="container">
+    <div class="row">
+        <h3>Resumen General de Estados</h3>
+    </div>
+    <div class="row">
+        <p class="text-info">Última Actualización:</p>
+        <p class="text-info">{{dateDay}}</p>
+    </div>
+    <div class="row">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" (click)="getmachmodels()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tipo de Maquina:
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button *ngFor="let mach of arraymachmodels" value={{mach.machineTypeId}} (click)="getstatuslog()">{{mach.machineTypeName}}</button>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+        <ng-container *ngFor="let object of arraymachinestatus">
+            <div class="col-sm-3">
+                <tr >Id: {{object.statusId}}</tr>
+                <tr >Name: {{object.statusName}}</tr>
+                <tr >Porcentaje: {{object.percentage}}</tr>
+            </div>
+        </ng-container>
+    </div>
 </div>
 

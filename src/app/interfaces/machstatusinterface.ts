@@ -8,4 +8,14 @@ export interface Machstatusinterfacelog {
     statusName: string;
     color: string;
     percentage: number;
+
+}
+
+export interface Machstatusinterfacemodels {
+    modelLogs: Array<Machstatusinterfacemodellogs>;
+}
+
+export interface Machstatusinterfacemodellogs {
+    machineTypeId: number;
+    machineTypeName: string;
 }
