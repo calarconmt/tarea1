@@ -7,23 +7,31 @@
         <p class="text-info">{{dateDay}}</p>
     </div>
     <div class="row">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" (click)="getmachmodels()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Tipo de Maquina:
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <button *ngFor="let mach of arraymachmodels" value={{mach.machineTypeId}} (click)="getstatuslog()">{{mach.machineTypeName}}</button>
+        <div class="col-sm-6">
+            <select #selectList class="custom-select" (change)="getstatuslog(selectList.value,selectdate.value)">
+                <option selected>Seleccione un modelo de Maquina</option>
+                <option *ngFor="let mach of arraymachmodels" value="{{mach.machineTypeId}}">{{mach.machineTypeName}}</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group date">
+                <input #selectdate type="text" class="form-control" value="12-02-2012">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
             </div>
-          </div>
+        </div>
     </div>
-    <div class="row">
-        <ng-container *ngFor="let object of arraymachinestatus">
-            <div class="col-sm-3">
-                <tr >Id: {{object.statusId}}</tr>
-                <tr >Name: {{object.statusName}}</tr>
-                <tr >Porcentaje: {{object.percentage}}</tr>
-            </div>
-        </ng-container>
+    <br>
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let object of arraymachinestatus">
+                <div class="col-sm-3">
+                    <tr>Name: {{object.statusName}}</tr>
+                    <tr>Porcentaje: {{object.percentage}}</tr>
+                    <img src="{{object.imgsrc}}" alt="100px" height="100px">
+                </div>
+            </ng-container>
+        </div>
     </div>
 </div>
-
