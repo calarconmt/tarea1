@@ -8,7 +8,7 @@ export interface Machstatusinterfacelog {
     statusName: string;
     color: string;
     percentage: number;
-
+    imgsrc: string;
 }
 
 export interface Machstatusinterfacemodels {
