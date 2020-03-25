@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MachstatusserviceService } from 'src/app/services/machstatusservice.service';
-import { Machstatusinterface, Machstatusinterfacelog,
-Machstatusinterfacemodels, Machstatusinterfacemodellogs } from 'src/app/interfaces/machstatusinterface';
+import { Machstatuslogs, Machstatusmodels } from 'src/app/interfaces/machstatusmodels';
+import { Machstatuslog } from 'src/app/interfaces/machstatuslog';
+import { endpointdatas } from 'src/app/interfaces/endpointdatas';
 
 @Component({
   selector: 'app-machstatus',
@@ -10,8 +11,8 @@ Machstatusinterfacemodels, Machstatusinterfacemodellogs } from 'src/app/interfac
 })
 // Declaración de variables necesarias.
 export class MachstatusComponent {
-  public arraymachinestatus: Array<Machstatusinterfacelog>;
-  public arraymachmodels: Array<Machstatusinterfacemodellogs>;
+  public arraymachinestatus: Array<Machstatuslog>;
+  public arraymachmodels: Array<Machstatuslogs>;
   public srcimg: string;
   public selidmach: number;
   public dateDay: string;
@@ -24,7 +25,7 @@ export class MachstatusComponent {
   // Función que recibe los datos desde endpoint y le asigna el "src" de la imagen según el estado y el tipo de maquina.
   public getstatuslog(machtype: number): void {
     this.dateDay = new Date().toLocaleString();
-    this.statusservice.getdata('http://localhost:3000/data').subscribe((res: Machstatusinterface) => {
+    this.statusservice.getdata('http://localhost:3000/data').subscribe((res: endpointdatas) => {
     this.arraymachinestatus = res.statusLog;
     this.arraymachinestatus.forEach(element => {
       if (machtype == 1) {
@@ -41,7 +42,7 @@ export class MachstatusComponent {
   }
   // Función que recibe los datos desde endpoint para luego cargarlos en el "dropdown"
   public getmachmodels(): void {
-    this.statusservice.getdata('http://localhost:3000/machmodels').subscribe((res: Machstatusinterfacemodels) => {
+    this.statusservice.getdata('http://localhost:3000/machmodels').subscribe((res: Machstatusmodels) => {
     this.arraymachmodels = res.modelLogs;
     });
   }
