@@ -48,5 +48,5 @@ export class MachstatusComponent {
   //   this.statusservice.getdata('http://localhost:3000/machmodels').subscribe((res: Machstatusmodels) => {
   //   this.arraymachmodels = res.modelLogs;
   //   });
-  }
+  // }
 }
