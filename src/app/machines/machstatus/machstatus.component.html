@@ -11,9 +11,9 @@
         <div class="col-sm-6">
             <select #selectList class="custom-select" (change)="getstatuslog(selectList.value)">
                 <option selected disabled>Seleccione un modelo de Maquina</option>
-                <option selected disabled>Jumbo</option>
-                <option selected disabled>Manitou</option>
-                <option selected disabled>Scoop</option>
+                <option value="1">Jumbo</option>
+                <option value="2">Manitou</option>
+                <option value="3">Scoop</option>
                 <!-- <option *ngFor="let mach of arraymachmodels" value="{{mach.machineTypeId}}">{{mach.machineTypeName}}</option> -->
             </select>
         </div>
