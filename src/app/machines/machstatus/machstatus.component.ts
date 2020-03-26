@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MachstatusserviceService } from 'src/app/services/machstatusservice.service';
-import { Machstatuslogs, Machstatusmodels } from 'src/app/interfaces/machstatusmodels';
-import { Machstatuslog } from 'src/app/interfaces/machstatuslog';
+import { IMachstatuslogs, IMachstatusmodels } from 'src/app/interfaces/machstatusmodels';
+import { IMachstatuslog } from 'src/app/interfaces/machstatuslog';
 import { endpointdatas } from 'src/app/interfaces/endpointdatas';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-machstatus',
@@ -11,21 +12,23 @@ import { endpointdatas } from 'src/app/interfaces/endpointdatas';
 })
 // Declaración de variables necesarias.
 export class MachstatusComponent {
-  public arraymachinestatus: Array<Machstatuslog>;
-  public arraymachmodels: Array<Machstatuslogs>;
+  public arraymachinestatus: Array<IMachstatuslog>;
+  public arraymachmodels: Array<IMachstatuslogs>;
   public srcimg: string;
   public selidmach: number;
   public dateDay: string;
+  public machstatusparams: any;
 
   constructor(public statusservice: MachstatusserviceService) {
     this.srcimg = '';
     this.dateDay = '';
-    this.getmachmodels();
+    this.machstatusparams = 'inputDate: 2020-02-13, companyId: 2, shiftId: -1, machineTypeId: ';
+    // this.getmachmodels();
   }
   // Función que recibe los datos desde endpoint y le asigna el "src" de la imagen según el estado y el tipo de maquina.
   public getstatuslog(machtype: number): void {
     this.dateDay = new Date().toLocaleString();
-    this.statusservice.getdata('http://localhost:3000/data').subscribe((res: endpointdatas) => {
+    this.statusservice.getAllMachineStatus(this.machstatusparams + machtype).subscribe((res: endpointdatas) => {
     this.arraymachinestatus = res.statusLog;
     this.arraymachinestatus.forEach(element => {
       if (machtype == 1) {
@@ -41,9 +44,9 @@ export class MachstatusComponent {
     });
   }
   // Función que recibe los datos desde endpoint para luego cargarlos en el "dropdown"
-  public getmachmodels(): void {
-    this.statusservice.getdata('http://localhost:3000/machmodels').subscribe((res: Machstatusmodels) => {
-    this.arraymachmodels = res.modelLogs;
-    });
+  // public getmachmodels(): void {
+  //   this.statusservice.getdata('http://localhost:3000/machmodels').subscribe((res: Machstatusmodels) => {
+  //   this.arraymachmodels = res.modelLogs;
+  //   });
   }
 }

@@ -1,4 +1,4 @@
-export interface Machstatuslog {
+export interface IMachstatuslog {
     statusId?: number;
     statusName?: string;
     color?: string;

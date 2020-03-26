@@ -1,8 +1,8 @@
-export interface Machstatusmodels {
-    modelLogs: Array<Machstatuslogs>;
+export interface IMachstatusmodels {
+    modelLogs: Array<IMachstatuslogs>;
 }
 
-export interface Machstatuslogs {
+export interface IMachstatuslogs {
     machineTypeId: number;
     machineTypeName: string;
 }
