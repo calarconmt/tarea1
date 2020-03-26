@@ -1,7 +1,7 @@
-import { Machstatuslog } from './machstatuslog';
+import { IMachstatuslog } from './machstatuslog';
 
 // tslint:disable-next-line: class-name
 export interface endpointdatas {
-    statusLog: Array<Machstatuslog>;
+    statusLog: Array<IMachstatuslog>;
     statusMachine: any;
 }
